@@ -42,13 +42,13 @@ jobs:
         run: |
           echo VERSION_TAG=$(echo ${{ steps.version_step.outputs.version_tag }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
           echo LATEST_TAG=$(echo ${{ steps.version_step.outputs.latest_tag  }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
-          - name: Build and push
-            id: docker_build
-            uses: docker/build-push-action@v2
-            with:
-              push: true
-              tags: |
-                ${{env.VERSION_TAG}}
-                ${{env.LATEST_TAG}}
-              build-args: |
-                ${{steps.version_step.outputs.version}}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: |
+            ${{env.VERSION_TAG}}
+            ${{env.LATEST_TAG}}
+          build-args: |
+            ${{steps.version_step.outputs.version}}
