@@ -45,7 +45,7 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/github-actions-golang:${{env.VERSION_TAG}}
-            ${{ secrets.DOCKER_USERNAME }}/github-actions-golang:${{env.LATEST_TAG}}
+            ${{env.VERSION_TAG}}
+            ${{env.LATEST_TAG}}
           build-args: |
             ${{steps.version_step.outputs.version}}
