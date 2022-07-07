@@ -19,8 +19,8 @@ jobs:
         id: version_step
         run: |
           echo "##[set-output name=version;]VERSION=${GITHUB_REF#$"refs/tags/v"}"
-          echo "##[set-output name=version_tag;]${{ $secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:${GITHUB_REF#$"refs/tags/v"}"
-          echo "##[set-output name=latest_tag;]${{ $secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest"
+          echo "##[set-output name=version_tag;]${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:${GITHUB_REF#$"refs/tags/v"}"
+          echo "##[set-output name=latest_tag;]${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest"
       - name: Print Version
         run:
           echo ${{steps.version_step.outputs.version_tag}}
